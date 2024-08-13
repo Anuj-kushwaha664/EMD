@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecaller Department</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+      
+        .container {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+        }
+        h2 {
+            margin-bottom: 20px;
+            margin-top: 0px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .actions {
+            text-align: center;
+        }
+        .actions button{
+        margin : 5px;
+      }
+        .form-popup {
+
+            display: flex;
+            flex-direction: column;
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 350px;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            top: 12%;
+            left: 35%;
+            box-shadow: 0px 0px 10px 2px black;
+            display: none;
+            
+        }
+        .form-popup input {
+            width: 100%;
+            padding: 4px;
+            /* margin-bottom: 10px; */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-popup button {
+            width: 100px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: auto;
+        }
+        .form-popup .cancel-btn {
+            background-color: black;
+
+        }
+        
+        .form-popup .update_btn{
+            margin-bottom: 5px;
+        }
+
+        .form-container{
+        position: absolute;
+        top: 55px;
+        left : 35%;
+      }
+      .actions button {
+        opacity: 0;
+    }
+
+    /* Show the buttons when hovering over any row */
+    tr:hover .actions button {
+        opacity: 1;
+        transition : all 0.5s;
+
+    }
+    </style>
+</head>
+<body>
+ <div class="sales_container">
+    <!------------------- nav begin ----------- -->
+    <div class="nav_main_container">
+        <div class="nav_menu_btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="logo">
+            <h2>Employee mangement system</h2>
+        </div>
+        <div class="nav_add_employ_btn">
+            <a href="" id="employ_btn"><i class="fa-solid fa-person-circle-plus fa-beat"></i></a>
+        </div>
+    </div>   
+    <!------------------- nav end ----------- -->
+
+    <div class="container">
+        <h2>Telecaller Department Employees</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Avatar</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile no</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="employeeList"></tbody>
+        </table>
+    </div>
+</div>
+    <div class="form-popup" id="editForm">
+        <h2>Edit Employee</h2>
+        <input type="hidden" id="editIndex">
+    
+        <!-- mine -->
+        <div class="form-group">
+            <label for="editEmployName">Employee Name</label>
+            <input type="text" id="editEmployName" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="editEmploySalary">Employee Salary</label>
+            <input type="number" id="editEmploySalary" required>
+        </div>
+        <div class="form-group">
+            <label for="editEmployEmail">Employee Email</label>
+            <input type="email" id="editEmployEmail" required>
+        </div>
+        <div class="form-group">
+            <label for="editEmployMobile">Employee Mobile Number</label>
+            <input type="tel" id="editEmployMobile" required pattern="[0-9]{10}">
+        </div>
+        
+        <div class="form-group">
+            <label for="editEmployDepartment">Employee Department</label>
+            <select id="editEmployDepartment" required>
+                <option value="" disabled selected>Select Department</option>
+                <option value="HR">HR</option>
+                <option value="Telecaller">Telecaller</option>
+                <option value="Technical">Technical</option>
+                <option value="Sales">Sales</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <!-- mine -->
+        <button onclick="updateEmployee()" class="update_btn">Update</button>
+        <button class="cancel-btn" onclick="closeForm()">Cancel</button>
+    </div>
+
+
+    <div class="menu_toggle ">
+        <!-- <a href="about.html">About</a>
+        <a href="contact.html">Contact</a> -->
+        <a href="index.html">Home</a>
+        <a href="hr_department.html">HR Department</a>
+        <a href="telecaller_department.html">Telecaller Department</a>
+        <a href="sale_department.html">Sales Department</a>
+        <a href="technical_department.html">Technical Deparment</a>
+    </div>
+
+    <div class="form-container hidden">
+        <form id="employeeForm">
+            <h2>Employee Form</h2>
+            <div class="form-group">
+                <label for="employName">Employee Name</label>
+                <input type="text" id="employName" required>
+            </div>
+  
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="boy" required> Male</label>
+                    <label><input type="radio" name="gender" value="girl" required> Female</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="employSalary">Salary</label>
+                <input type="number" id="employSalary" required>
+            </div>
+            <div class="form-group">
+                <label for="employEmail">Employee Email</label>
+                <input type="email" id="employEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="employMobile">Employee Mobile Number</label>
+                <input type="tel" id="employMobile" required pattern="[0-9]{10}">
+            </div>
+            
+            <div class="form-group">
+                <label for="employDepartment">Employee Department</label>
+                <select id="employDepartment" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="HR">HR</option>
+                    <option value="Telecaller">Telecaller</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Sales">Sales</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+            <div id="employ_btn2">Cancel</div>
+        </form>
+        <i id="cancel" class="fa-solid fa-xmark"></i>
+        </div>
+
+        <div class="loader" id="loader" style="display: none;">
+            <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+        </div>
+    
+
+    <script>
+        function displaySalesEmployees() {
+            const salesEmployees = JSON.parse(localStorage.getItem('Telecaller')) || [];
+            // const salesEmployees = employDetail.filter(employee => employee.employDepartment.toLowerCase() === 'sales');
+            // const employeeList = document.getElementById('employeeList');
+
+            employeeList.innerHTML = '';
+            let index = -1;
+
+            salesEmployees.forEach((employee) => {
+                // const index = employDetail.indexOf(employee);
+                index++;
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    
+                    <td><img style="height:70px; weight : 70px; object-fit : contain;" src="${employee.employGender}" alt=""></td>
+                    <td>${employee.employName}</td>
+                    <td>${employee.employEmail}</td>
+                    <td>${employee.employMobile}</td>
+                    <td>${employee.employSalary}</td>
+                    <td class="actions">
+                        <button onclick="editEmployee(${index})"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteEmployee(${index})"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                `;
+                employeeList.appendChild(tr);
+            });
+        }
+
+        function editEmployee(index) {
+            const employDetail = JSON.parse(localStorage.getItem('Telecaller')) || [];
+            const employee = employDetail[index];
+
+            document.getElementById('editIndex').value = index;
+            document.getElementById('editEmployName').value = employee.employName;
+            document.getElementById('editEmployDepartment').value = employee.employDepartment;
+            document.getElementById('editEmploySalary').value = employee.employSalary;
+            document.getElementById('editEmployMobile').value = employee.employMobile;
+            document.getElementById('editEmployEmail').value = employee.employEmail;
+
+            document.getElementById('editForm').style.display = 'block';
+        }
+
+        function updateEmployee() {
+            const index = document.getElementById('editIndex').value;
+            const employDetail = JSON.parse(localStorage.getItem('Telecaller')) || [];
+
+            var employName = document.getElementById('editEmployName').value;
+            var employSalary = document.getElementById('editEmploySalary').value;
+            var employEmail = document.getElementById('editEmployEmail').value;
+            var employMobile = document.getElementById('editEmployMobile').value;
+            var employDepartment = document.getElementById('editEmployDepartment').value;
+
+            console.log(employDepartment);
+
+            var namePattern = /^[A-Za-z\s]+$/;
+            var mobilePattern = /^[0-9]{10}$/;
+            var salaryPattern = /^\d+(\.\d{1,2})?$/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            
+            if (!namePattern.test(employName)) {
+                alert("Employee name should only contain letters and spaces.");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            if (!salaryPattern.test(employSalary)) {
+                alert("Employee salary should only contain digits and one decimal at most.");
+                // event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            if(!emailPattern.test(employEmail)){
+                alert("Please enter valid email address");
+                return;
+            }
+
+            if (employSalary <= 0 || !/^\d+$/.test(employSalary)) {
+                alert("Salary must be a positive number.");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            if (!mobilePattern.test(employMobile)) {
+                alert("Mobile number must be a 10-digit number.");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+
+            employDetail[index].employName = document.getElementById('editEmployName').value;
+            employDetail[index].employDepartment = document.getElementById('editEmployDepartment').value;
+            employDetail[index].employSalary = document.getElementById('editEmploySalary').value;
+            employDetail[index].employMobile = document.getElementById('editEmployMobile').value;
+            employDetail[index].employEmail = document.getElementById('editEmployEmail').value;
+
+            if(employDepartment!='Telecaller'){
+                console.log("anuj");
+                let employDetailOfOtherDepartment = JSON.parse(localStorage.getItem(employDepartment)) || [];
+                
+                let flag = false;
+
+            employDetailOfOtherDepartment.forEach(element => {
+                if(element.employEmail === employEmail){
+                    flag = true;
+                    console.log(element.employEmail);
+                }
+            });
+
+            if(!flag){
+                // Add the new employee details to the array
+                employDetailOfOtherDepartment.push(employDetail[index]);
+
+                // Store the updated array back in local storage
+                localStorage.setItem(
+                    employDepartment,
+                    JSON.stringify(employDetailOfOtherDepartment)
+                );
+
+                deleteEmployee(index);
+            }else{
+                alert(`user already exists in that ${employDepartment}`);
+            }
+            }else{
+                localStorage.setItem('Telecaller', JSON.stringify(employDetail));
+            }
+            document.getElementById('editForm').style.display = 'none';
+            displaySalesEmployees();
+        }
+
+        function deleteEmployee(index) {
+            let confirmation = confirm("This user data will be deleted from here")
+            if(confirmation){
+            const employDetail = JSON.parse(localStorage.getItem('Telecaller')) || [];
+            employDetail.splice(index, 1);
+            localStorage.setItem('Telecaller', JSON.stringify(employDetail));
+            displaySalesEmployees();
+            }
+        }
+
+        function closeForm() {
+            document.getElementById('editForm').style.display = 'none';
+        }
+
+        window.onload = displaySalesEmployees;
+    </script>
+    <script>
+        document.querySelector('.nav_menu_btn').addEventListener('click',  (e)=>{
+    console.log('clicked');
+    document.querySelector('.menu_toggle').classList.toggle('trans');
+})
+    </script>
+
+
+<script>
+    document.getElementById('employeeForm').addEventListener('submit', async function(event) {
+  event.preventDefault();
+  let loader = document.getElementById("loader");
+  loader.style.display = "block";
+
+  var employName = document.getElementById('employName').value;
+  var employSalary = document.getElementById('employSalary').value;
+  var employEmail = document.getElementById('employEmail').value.toLowerCase();
+  var employMobile = document.getElementById('employMobile').value;
+  var employDepartment = document.getElementById('employDepartment').value;
+  const gender = document.querySelector('input[name="gender"]:checked').value;
+
+  console.log(employEmail);
+  console.log("anuj");
+  var namePattern = /^[A-Za-z\s]+$/;
+  var mobilePattern = /^[0-9]{10}$/;
+  var salaryPattern = /^\d+(\.\d{1,2})?$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  
+  if (!namePattern.test(employName)) {
+      alert("Employee name should only contain letters and spaces.");
+      event.preventDefault(); // Prevent form submission
+      return;
+  }
+
+  if (!salaryPattern.test(employSalary)) {
+      alert("Employee salary should only contain digits and one decimal at most.");
+      // event.preventDefault(); // Prevent form submission
+      return;
+  }
+
+  if(!emailPattern.test(employEmail)){
+      alert("Please enter valid email address");
+      return;
+  }
+
+  if (employSalary <= 0 || !/^\d+$/.test(employSalary)) {
+      alert("Salary must be a positive number.");
+      event.preventDefault(); // Prevent form submission
+      return;
+  }
+
+  if (!mobilePattern.test(employMobile)) {
+      alert("Mobile number must be a 10-digit number.");
+      event.preventDefault(); // Prevent form submission
+      return;
+  }
+
+  let flag = false;
+  // Retrieve the employDetail array from local storage
+  let employDetail = JSON.parse(localStorage.getItem(employDepartment)) || [];
+
+  employDetail.forEach(element => {
+      if(element.employEmail === employEmail){
+          flag = true;
+          console.log(element.employEmail);
+      }
+  });
+  
+  if(!flag){
+
+      function getImageBase64(url, callback) {
+          fetch(url)
+              .then(response => response.blob())
+              .then(blob => {
+                  const reader = new FileReader();
+                  reader.onloadend = () => callback(reader.result);
+                  reader.readAsDataURL(blob);
+              })
+              .catch(error => console.error('Error:', error));
+      }
+      
+      const imageUrl = `https://avatar.iran.liara.run/public/${gender}`;
+  let employGender ;
+
+          getImageBase64(imageUrl, (base64Image) => {
+              // Store the image in localStorage
+              // localStorage.setItem('savedImage', base64Image);
+              employGender = base64Image;
+
+              const employee = {
+                  employName,
+                  employDepartment,
+                  employSalary,
+                  employEmail,
+                  employMobile,
+                  employGender 
+              };
+              
+      
+
+      // Add the new employee details to the array
+      employDetail.push(employee);
+
+      // Store the updated array back in local storage
+      localStorage.setItem(employDepartment, JSON.stringify(employDetail));
+
+      loader.style.display = "none";
+      alert('Employee information stored successfully!');
+      displaySalesEmployees();
+      document.getElementById('employName').value = "";
+      document.getElementById('employSalary').value = "";
+      document.getElementById('employEmail').value = "";
+      document.getElementById('employMobile').value = "";
+      document.getElementById('employDepartment').value = "";
+              console.log(employGender);
+              console.log('Image saved in localStorage');
+          });
+  }else{
+    loader.style.display = "none";
+      alert("user already exist with same email in this department");
+  }
+});
+
+document.getElementById('employ_btn').addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  document.querySelector('.form-container').classList.toggle('hidden');
+})
+
+document.getElementById('employ_btn2').addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  document.querySelector('.form-container').classList.toggle('hidden');
+})
+
+document.getElementById('cancel').addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  document.querySelector('.form-container').classList.toggle('hidden');
+})
+
+  </script>
+
+
+</body>
+</html>

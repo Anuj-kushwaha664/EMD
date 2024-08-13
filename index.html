@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMD</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+
+    <!------------------- nav begin ----------- -->
+    <div class="nav_main_container">
+        <div class="nav_menu_btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="logo">
+            <h2>Employee Management Dashboard</h2>
+        </div>
+        <div class="nav_add_employ_btn">
+            <a href="" id="employ_btn"><i class="fa-solid fa-person-circle-plus fa-beat"></i></a>
+        </div>
+    </div>   
+    <!------------------- nav end ----------- -->
+
+    <!-- ----------------- form begin --------------- -->
+
+
+    <div class="form-container hidden">
+        <form id="employeeForm">
+            <h2>Employee Form</h2>
+            <div class="form-group">
+                <label for="employName">Employee Name</label>
+                <input type="text" id="employName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="boy" required> Male</label>
+                    <label><input type="radio" name="gender" value="girl" required> Female</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="employSalary">Salary</label>
+                <input type="number" id="employSalary" required>
+            </div>
+            <div class="form-group">
+                <label for="employEmail">Employee Email</label>
+                <input type="email" id="employEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="employMobile">Employee Mobile Number</label>
+                <input type="tel" id="employMobile" required pattern="[0-9]{10}">
+            </div>
+            
+            <div class="form-group">
+                <label for="employDepartment">Employee Department</label>
+                <select id="employDepartment" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="HR">HR</option>
+                    <option value="Telecaller">Telecaller</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Sales">Sales</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+            <div id="employ_btn2">Cancel</div>
+        </form>
+        <i id="cancel" class="fa-solid fa-xmark"></i>
+        
+        </div>
+    
+
+
+    <!-- ----------------- form end --------------- -->
+
+    <!------------------- main_begin ----------- -->
+    <div class="card_container">
+        
+        <div class="box">
+            <div class="hr">HR Department</div>
+            <img src="./src/image/hr.jpg" alt="">
+            <div class="Click"><a href="hr_department.html">Click here</a></div>
+        </div>
+
+        <div class="box">
+            <div class="hr">Telecaller Department</div>
+            <img src="./src/image/Active Support-bro.png" alt="">
+            <div class="Click"><a href="telecaller_department.html">Click here</a></div>
+        </div>
+
+        <div class="box">
+            <div class="hr">Sales Department</div>
+            <img src="./src/image/Marketing consulting-rafiki.png" alt="">
+            <div class="Click"><a href="sale_department.html">Click here</a></div>
+        </div>
+
+        <div class="box">
+            <div class="hr">Technical Department</div>
+            <img src="./src/image/software tester-pana.png" alt="">
+            <div class="Click"><a href="technical_department.html">Click here</a></div>
+        </div>
+      
+        
+    </div>
+    <!------------------- main_end ----------- -->
+
+    <div class="menu_toggle">
+        <a href="#">Profile</a>
+        <a href="#">Salary transaction</a>
+        <a href="#">Daily task</a>
+        <a href="#">Attendence </a>
+        <a href="#">Sign out</a>
+    </div>
+    
+    <div class="loader" id="loader" style="display: none;">
+        <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+    </div>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>

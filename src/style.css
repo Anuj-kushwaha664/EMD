@@ -1,0 +1,283 @@
+body{
+    margin : 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: lightgray;
+    font-family: 'poppins';
+}
+
+.nav_main_container{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    padding : 10px;
+    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.logo{
+    color: white;
+}
+
+.nav_menu_btn{
+    color : white;
+    font-size: 35px;
+    padding : 5px;
+}
+
+.nav_add_employ_btn a{
+    text-decoration: none;
+    background-color: white;
+    color:black;
+    font-weight: 500;
+    padding : 5px 10px;
+    border-radius: 5px;
+    font-size: 25px;
+    
+}
+
+
+#employ_btn2{
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: orange;
+    font-size: 19px;
+    cursor: pointer;
+    text-align: center;
+    /* font-weight: 800; */
+}
+
+.card_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+ .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 250px;
+    background-color: black;
+    color : white;
+    width: 250px;
+    border-radius:15px;
+    position: relative;
+    margin-top: 15px;
+}
+
+.box:hover {
+    transform: scale(1.05); /* Slightly enlarges the box on hover */
+}
+
+.hr {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: black;
+    background-color: white; /* Optional: semi-transparent background */
+    padding: 5px;
+    transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    /* font-size: 15px; */
+    border-radius: 8px;
+}
+
+.box:hover .hr {
+    top: 10px;
+    opacity: 1;
+}
+
+.Click {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: black;
+    background-color: white; /* Optional: semi-transparent background */
+    padding: 5px;
+    transition: bottom 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    font-size: 10px;
+    border-radius: 8px;
+
+}
+
+.box:hover .Click {
+    bottom: 10px;
+    opacity: 1;
+}
+
+.Click a{
+    text-decoration: none;
+    Color : black;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+
+}
+
+
+.form-container {
+    /* position: absolute;
+    top: 95px;
+    left:32%; */
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    width: 100%;
+    background-color: white;
+}
+.form-container h2 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+/* .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+} */
+.form-group input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: orange;
+    font-size: 16px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: #5cb85c;
+    color : white;
+}
+
+#employeeForm{
+    width: 97%;
+}
+
+.form-container i{
+    font-size: 20px;
+}
+#employDepartment{
+    width: 50%;
+    height: 30px;
+}
+
+#employ_btn2{
+    font-size: 15px;
+}
+#employ_btn2:hover{
+    background-color: #5cb85c;
+    color : white;
+}
+
+
+.radio-group input[type="radio"] {
+    display: inline-block;
+
+}
+
+
+
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 0; /* Ensure that the labels don't create additional spacing */
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+    margin-bottom: 0; /* Ensure that the input doesn't create additional spacing */
+}
+
+
+
+
+
+
+
+.menu_toggle{
+    display: flex;;
+    flex-direction: column;
+    gap : 10px;
+    width : 200px;
+    background-color: black;
+    height: 100vh;
+    position: absolute;
+    top: 62px;
+    left: -250px;
+    padding: 30px 10px;
+    transition: all 0.4s ease-in-out;
+
+}
+.trans{
+    left : 0px;
+    transition: all 0.4s ease-in-out;
+
+}
+.menu_toggle a{
+    text-decoration: none;
+    padding: 5px;
+    color : white;
+    background-color: lightgray;
+    border-radius: 5px;
+    color: black;
+}
+
+
+.hidden{
+    display: none;
+    transform: translateX(-100%); /* Hide the menu off-screen */
+    transition: transform 0.5s; /* Smooth transition for showing/hiding */
+}
+
+/* loader styling  */
+#loader{
+    position: absolute;
+    top : 300px;
+    left : 40%;
+    font-size: 40px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    color : orange
+}
